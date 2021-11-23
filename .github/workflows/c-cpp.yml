@@ -44,5 +44,7 @@ jobs:
 #      run: make test_valgrind V=1
  
     - name: test cmake
-      run: make test_cmake V=1
+      run: |
+        pwd
+        make test_cmake V=1
 
