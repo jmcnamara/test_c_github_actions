@@ -40,8 +40,8 @@ jobs:
 #    - name: test cpp
 #      run: make test_cpp V=1
       
-    - name: test valgrind
-      run: make test_valgrind V=1
+#    - name: test valgrind
+#      run: make test_valgrind V=1
  
     - name: test cmake
       run: make test_cmake V=1
