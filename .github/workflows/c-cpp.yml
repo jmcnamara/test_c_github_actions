@@ -10,8 +10,9 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        cc: [gcc]
+        os:         [ubuntu-latest]
+        cc:         [gcc]
+        make_flags: ["CFLAGS='-Werror'", "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1 CFLAGS='-Werror'"]
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
@@ -20,12 +21,12 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: make
-      run: make V=1
+      run: ${{ matrix.make_flags }} make V=1
       
-    - name: Install test dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
+#    - name: Install test dependencies
+#      run: |
+#        python -m pip install --upgrade pip
+#        pip install pytest
 
     #- name: Install package
     #  run: |
@@ -43,9 +44,9 @@ jobs:
 #    - name: test valgrind
 #      run: make test_valgrind V=1
  
-    - name: test cmake
-      run: |
-        pwd
-        ls -l
-        make test_cmake V=1
+#    - name: test cmake
+#      run: |
+#        pwd
+#        ls -l
+#        make test_cmake V=1
 
