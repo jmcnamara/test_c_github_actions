@@ -49,6 +49,6 @@ jobs:
     - name: test cpp
       run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_cpp V=1
       
-#    - name: test valgrind
-#      run: make test_valgrind V=1
+    - name: test valgrind
+      run: make test_valgrind V=1
  
