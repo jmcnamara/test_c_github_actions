@@ -10,7 +10,6 @@ jobs:
   build:
     strategy:
       matrix:
-        os:         [ubuntu-latest]
         cc:         [gcc, clang]
         make_flags: ["", 
                      "USE_STANDARD_TMPFILE=1 NO_VALGRIND=1", 
@@ -19,11 +18,12 @@ jobs:
                      "USE_NO_MD5=1           NO_VALGRIND=1", 
                      "USE_OPENSSL_MD5=1      NO_VALGRIND=1", 
                      "USE_FMEMOPEN=1         NO_VALGRIND=1"]
+        os:         [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
     env:
       CC:  ${{ matrix.cc }}
-      CVV: ${{ matrix.cc }}
+      CXX: ${{ matrix.cc }}
 
     steps:
     - uses: actions/checkout@v2
