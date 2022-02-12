@@ -22,8 +22,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     env:
-      CC:  ${{ matrix.cc }}
-      CXX: ${{ matrix.cc }}
+      CC:     ${{ matrix.cc }}
+      CXX:    ${{ matrix.cc }}
+      CFLAGS: '-Werror'
 
     steps:
     - uses: actions/checkout@v2
@@ -38,17 +39,17 @@ jobs:
         sudo apt-get -y install zlib1g-dev
 
     - name: make
-      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make V=1
+      run: ${{ matrix.make_flags }} make V=1
       
     - name: test unit
-      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_unit V=1
+      run: ${{ matrix.make_flags }} make test_unit V=1
       
     - name: test functional
-      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_functional V=1
+      run: ${{ matrix.make_flags }} make test_functional V=1
       
     - name: test cpp
-      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_cpp V=1
+      run: ${{ matrix.make_flags }} make test_cpp V=1
       
     - name: test valgrind
-      run: make test_valgrind V=1
+      run: ${{ matrix.make_flags }} make test_valgrind V=1
  
