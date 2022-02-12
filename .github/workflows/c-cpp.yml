@@ -22,7 +22,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     env:
-      CC: ${{ matrix.cc }}
+      CC:  ${{ matrix.cc }}
+      CVV: ${{ matrix.cc }}
 
     steps:
     - uses: actions/checkout@v2
