@@ -14,7 +14,7 @@ jobs:
         cc:         [gcc]
         make_flags: | 
           ["", 
-           "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1 CFLAGS='-Werror'"
+           "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1",
            "NO_VALGRIND=1 USE_SYSTEM_MINIZIP=1",
            "NO_VALGRIND=1 USE_DTOA_LIBRARY=1",
            "NO_VALGRIND=1 USE_NO_MD5=1",
