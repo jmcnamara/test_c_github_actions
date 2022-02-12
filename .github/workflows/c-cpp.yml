@@ -13,7 +13,12 @@ jobs:
         os:         [ubuntu-latest]
         cc:         [gcc]
         make_flags: ["", 
-                     "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1", "NO_VALGRIND=1 USE_SYSTEM_MINIZIP=1", "NO_VALGRIND=1 USE_DTOA_LIBRARY=1", "NO_VALGRIND=1 USE_NO_MD5=1", "NO_VALGRIND=1 USE_OPENSSL_MD5=1", "NO_VALGRIND=1 USE_FMEMOPEN=1"]
+                     "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1", 
+                     "NO_VALGRIND=1 USE_SYSTEM_MINIZIP=1", 
+                     "NO_VALGRIND=1 USE_DTOA_LIBRARY=1", 
+                     "NO_VALGRIND=1 USE_NO_MD5=1", 
+                     "NO_VALGRIND=1 USE_OPENSSL_MD5=1", 
+                     "NO_VALGRIND=1 USE_FMEMOPEN=1"]
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
@@ -33,23 +38,15 @@ jobs:
     - name: make
       run: CFLAGS='-Werror' ${{ matrix.make_flags }} make V=1
       
-
-    
-#    - name: test unit
-#      run: make test_unit V=1
+    - name: test unit
+      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_unit V=1
       
-#    - name: test functional
-#      run: make test_functional V=1
+    - name: test functional
+      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_functional V=1
       
-#    - name: test cpp
-#      run: make test_cpp V=1
+    - name: test cpp
+      run: CFLAGS='-Werror' ${{ matrix.make_flags }} make test_cpp V=1
       
 #    - name: test valgrind
 #      run: make test_valgrind V=1
  
-#    - name: test cmake
-#      run: |
-#        pwd
-#        ls -l
-#        make test_cmake V=1
-
