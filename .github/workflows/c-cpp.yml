@@ -12,8 +12,8 @@ jobs:
       matrix:
         os:         [ubuntu-latest]
         cc:         [gcc]
-        make_flags: |
-          ["", "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1", "NO_VALGRIND=1 USE_SYSTEM_MINIZIP=1", "NO_VALGRIND=1 USE_DTOA_LIBRARY=1", "NO_VALGRIND=1 USE_NO_MD5=1", "NO_VALGRIND=1 USE_OPENSSL_MD5=1", "NO_VALGRIND=1 USE_FMEMOPEN=1"]
+        make_flags: ["", 
+                     "NO_VALGRIND=1 USE_STANDARD_TMPFILE=1", "NO_VALGRIND=1 USE_SYSTEM_MINIZIP=1", "NO_VALGRIND=1 USE_DTOA_LIBRARY=1", "NO_VALGRIND=1 USE_NO_MD5=1", "NO_VALGRIND=1 USE_OPENSSL_MD5=1", "NO_VALGRIND=1 USE_FMEMOPEN=1"]
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
