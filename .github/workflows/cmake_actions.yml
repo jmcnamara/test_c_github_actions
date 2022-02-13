@@ -35,7 +35,7 @@ jobs:
       working-directory: ${{ github.workspace }}/cmake
       run: |
         ctest -C Release -V
-        mkdir -f test
+        mkdir test
         cp -rf ../test/functional test
         mv test_* test/functional/src
         pytest test/functional -v
