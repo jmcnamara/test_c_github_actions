@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    name:
+      Run make build configurations
     strategy:
       matrix:
         cc:         [gcc, clang]
@@ -53,7 +55,9 @@ jobs:
     - name: test examples
       run: ${{ matrix.make_flags }} make examples V=1
  
-  mem_leaks:
+  valgrind:
+    name:
+      Test for memory leaks with valgrind
     runs-on: ubuntu-latest
     env:
       CC: gcc
