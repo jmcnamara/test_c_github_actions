@@ -5,7 +5,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+env:
+  BUILD_TYPE: Release
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,16 +22,15 @@ jobs:
         sudo apt-get -y install libminizip-dev
         sudo apt-get -y install libssl-dev
         sudo apt-get -y install valgrind
-        sudo apt-get -y install zlib1g-dev
 
     - name: Configure CMake
       working-directory: ${{github.workspace}}/cmake
-      run:  cmake .. -DBUILD_TESTS=ON
+      run:  cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
       working-directory: ${{github.workspace}}/cmake
-      run: make
+      run: cmake --build . --config Release
 
     - name: Test
       working-directory: ${{github.workspace}}/cmake
-      run: ./xlsxwriter_unit
+      run: ctest -C Release -V
