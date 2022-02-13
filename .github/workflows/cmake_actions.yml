@@ -24,13 +24,19 @@ jobs:
         sudo apt-get -y install valgrind
 
     - name: Configure CMake
-      working-directory: ${{github.workspace}}/cmake
-      run:  cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      working-directory: ${{ github.workspace }}/cmake
+      run:  cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
 
     - name: Build
-      working-directory: ${{github.workspace}}/cmake
+      working-directory: ${{ github.workspace }}/cmake
       run: cmake --build . --config Release
 
     - name: Test
-      working-directory: ${{github.workspace}}/cmake
-      run: ctest -C Release -V
+      working-directory: ${{ github.workspace }}/cmake
+      run: |
+        ctest -C Release -V
+        mkdir -p test/functional/src
+        mv test_* test/functional/src
+        cp -rf ../test/functional/*.py       test/functional
+        cp -rf ../test/functional/xlsx_files test/functional
+        pytest test/functional -v
