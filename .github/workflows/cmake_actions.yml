@@ -11,6 +11,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tests:         [ON, OFF]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,7 +28,7 @@ jobs:
 
     - name: Configure CMake
       working-directory: ${{ github.workspace }}/cmake
-      run:  cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+      run:  cmake .. -DBUILD_TESTS=${{ matrix.tests }} -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
 
     - name: Build
       working-directory: ${{ github.workspace }}/cmake
