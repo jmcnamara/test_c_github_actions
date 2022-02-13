@@ -356,15 +356,15 @@ if(BUILD_TESTS)
     # unit tests
     CreateTest(LXW_UNIT_SOURCES unit)
 
-    # functional tests
-    # WARNING: currently doesn't work, since the Python tests expect
-    # in-source builds
-    #find_program(PYTHON python)
-    #foreach(source ${LXW_FUNCTIONAL_SOURCES})
-    #    get_filename_component(basename ${source} NAME_WE)
-    #    add_executable(${basename} ${source})
-    #    target_link_libraries(${basename} xlsxwriter)
-    #endforeach(source)
+    # functional tests WARNING: currently only compiles but doesn't run the
+    # tests, since they need to be in a location relative to additional files
+    # from the test/functional directory.
+    find_program(PYTHON python)
+    foreach(source ${LXW_FUNCTIONAL_SOURCES})
+       get_filename_component(basename ${source} NAME_WE)
+       add_executable(${basename} ${source})
+       target_link_libraries(${basename} xlsxwriter)
+    endforeach(source)
 endif()
 
 # EXAMPLES
