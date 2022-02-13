@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name:
-      Run make build configurations
+      Build optional configs with make
     strategy:
       matrix:
         cc:         [gcc, clang]
