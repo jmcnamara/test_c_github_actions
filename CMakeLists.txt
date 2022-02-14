@@ -358,8 +358,13 @@ if(BUILD_TESTS)
     CreateTest(LXW_UNIT_SOURCES unit)
 
     # functional tests
-    find_program(PYTHON python)
-    find_program(PYTEST pytest)
+    find_package(Python COMPONENTS Interpreter REQUIRED)
+    find_program(Pytest_EXECUTABLE NAMES pytest)
+
+    if (NOT Pytest_EXECUTABLE)
+        message("Please install the Python pytest library to run functional tests:")
+        message("    pip install pytest\n")
+    endif()
 
     set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test/functional/src )
 
