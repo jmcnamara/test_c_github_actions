@@ -50,5 +50,4 @@ jobs:
 
     - name: Test
       working-directory: ${{ github.workspace }}/cmake
-      if matrix.cmake_flags !=  'test'
       run: ctest -C Release -V
