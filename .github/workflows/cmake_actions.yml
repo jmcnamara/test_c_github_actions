@@ -9,22 +9,23 @@ on:
 jobs:
   build:
     name:
-      Build with cmake
+      Build with Cmake
 
     strategy:
       matrix:
         # cc:          [gcc, clang]
         cmake_flags: ["",
-                      "-DBUILD_TESTS=OFF -DBUILD_EXAMPLES=ON",
-                      "-DBUILD_TESTS=ON  -DUSE_DTOA_LIBRARY=ON",
-                      "-DBUILD_TESTS=ON  -DUSE_FMEMOPEN=ON",
-                      "-DBUILD_TESTS=ON  -DUSE_NO_MD5=ON",
-                      "-DBUILD_TESTS=ON  -DUSE_OPENSSL_MD5=ON",
-                      "-DBUILD_TESTS=ON  -DUSE_STANDARD_TMPFILE=ON",
-                      "-DBUILD_TESTS=ON  -DUSE_SYSTEM_MINIZIP=ON"]
+                      "-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=OFF",
+                      "-DUSE_DTOA_LIBRARY=ON     -DBUILD_TESTS=ON",
+                      "-DUSE_FMEMOPEN=ON         -DBUILD_TESTS=ON",
+                      "-DUSE_NO_MD5=ON           -DBUILD_TESTS=ON",
+                      "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=ON",
+                      "-DUSE_STANDARD_TMPFILE=ON -DBUILD_TESTS=ON",
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON"]
 
     runs-on: ubuntu-latest
-
+    fail-fast: false
+    
     # env:
     #   CC: ${{ matrix.cc }}
 
