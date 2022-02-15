@@ -12,6 +12,7 @@ jobs:
       Build with Cmake
 
     strategy:
+      fail-fast: false
       matrix:
         # cc:          [gcc, clang]
         cmake_flags: ["",
@@ -24,7 +25,6 @@ jobs:
                       "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON"]
 
     runs-on: ubuntu-latest
-    fail-fast: false
     
     # env:
     #   CC: ${{ matrix.cc }}
