@@ -50,4 +50,5 @@ jobs:
 
     - name: Test
       working-directory: ${{ github.workspace }}/cmake
+      if ${{ matrix.cmake_flags !=  "-DUSE_NO_MD5=ON           -DBUILD_TESTS=ON" }}
       run: ctest -C Release -V
