@@ -19,3 +19,4 @@ jobs:
         email: ${{ secrets.COVERITY_SCAN_EMAIL }}
         token: ${{ secrets.COVERITY_SCAN_TOKEN }}
         command: make -C src libxlsxwriter.a
+        project: libxlsxwriter
