@@ -9,12 +9,12 @@ on:
 jobs:
   build:
     name:
-      Build with Cmake
+      Cmake
 
     strategy:
       fail-fast: false
       matrix:
-        # cc:          [gcc, clang]
+        cc:          [gcc, clang]
         cmake_flags: ["",
                       "-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=OFF",
                       "-DUSE_DTOA_LIBRARY=ON     -DBUILD_TESTS=ON",
@@ -27,8 +27,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    # env:
-    #   CC: ${{ matrix.cc }}
+    env:
+      CC: ${{ matrix.cc }}
 
     steps:
     - uses: actions/checkout@v2
