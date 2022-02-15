@@ -22,10 +22,11 @@ jobs:
                       "-DUSE_NO_MD5=ON           -DBUILD_TESTS=ON",
                       "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=ON",
                       "-DUSE_STANDARD_TMPFILE=ON -DBUILD_TESTS=ON",
-                      "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON"]
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON",
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DUSE_OPENSSL_MD5=ON -DBUILD_TESTS=ON"]
 
     runs-on: ubuntu-latest
-    
+
     # env:
     #   CC: ${{ matrix.cc }}
 
