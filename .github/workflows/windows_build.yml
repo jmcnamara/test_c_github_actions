@@ -18,13 +18,14 @@ jobs:
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         echo "-----------------------------"
         dir
-        mkdir build
-        cd build
         echo "-----------------------------"
         vcpkg.exe --version
         vcpkg.exe install zlib
         vcpkg.exe integrate install
+        vcpkg.exe list
         echo "-----------------------------"
+        mkdir build
+        cd build
         cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
         echo "-----------------------------"
         cmake --build . --config Release
