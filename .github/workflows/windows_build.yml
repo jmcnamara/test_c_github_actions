@@ -19,5 +19,6 @@ jobs:
         dir
         mkdir build
         cd build
+        dir
         cmake --build . -DCMAKE_BUILD_TYPE=Release
       

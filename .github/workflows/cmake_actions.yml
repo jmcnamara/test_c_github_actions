@@ -2,9 +2,9 @@ name: Build with CMake
 
 on:
   push:
-    branches: [ main ]
+    branches: [ coverity ]
   pull_request:
-    branches: [ main ]
+    branches: [ coverity ]
 
 jobs:
   build:
