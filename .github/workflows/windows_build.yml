@@ -1,0 +1,23 @@
+name: Cmake on Windows
+
+on: [push]
+
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+        dir
+        mkdir build
+        cd build
+        cmake --build . -DCMAKE_BUILD_TYPE=Release
+      
