@@ -20,7 +20,7 @@ jobs:
         dir
         echo "-----------------------------"
         vcpkg.exe --version
-        vcpkg.exe install zlib
+        vcpkg.exe install zlib:x64-windows
         vcpkg.exe integrate install
         vcpkg.exe list
         echo "-----------------------------"
