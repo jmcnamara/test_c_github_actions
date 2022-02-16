@@ -21,7 +21,9 @@ jobs:
         mkdir build
         cd build
         echo "-----------------------------"
-        dir
+        vcpkg.exe --version
+        vcpkg.exe install zlib
+        vcpkg.exe integrate install
         echo "-----------------------------"
         cmake .. -DCMAKE_BUILD_TYPE=Release
         echo "-----------------------------"
