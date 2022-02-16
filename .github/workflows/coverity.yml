@@ -16,9 +16,7 @@ jobs:
 
     - uses: vapier/coverity-scan-action@v1
       with:
-        email: ${{ secrets.COVERITY_SCAN_EMAIL }}
-        token: ${{ secrets.COVERITY_SCAN_TOKEN }}
+        email: "jmcnamara@cpan.org"
+        token: "tjHvoWMT_46meEzYXSwVnQ"
         command: make -C src libxlsxwriter.a
-
-    - name: Debug
-      run: ls -ltr
+        project: libxlsxwriter
