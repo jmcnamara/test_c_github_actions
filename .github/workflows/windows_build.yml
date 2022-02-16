@@ -25,7 +25,7 @@ jobs:
         vcpkg.exe install zlib
         vcpkg.exe integrate install
         echo "-----------------------------"
-        cmake .. -DCMAKE_BUILD_TYPE=Release
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
         echo "-----------------------------"
         cmake --build . --config Release
         
