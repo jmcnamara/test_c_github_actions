@@ -65,4 +65,4 @@ jobs:
         echo "-----------------------------"
         pytest -v test/functional -k test_array
         echo "-----------------------------"
-        #ctest -C Release -V
+        ctest -C Release -V
