@@ -28,7 +28,7 @@ jobs:
       shell: cmd
       run: |
         # vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
-        vcpkg.exe install zlib:x86-windows
+        vcpkg.exe install zlib:x86-windows zlib:x64-windows
         echo "-----------------------------"
         vcpkg.exe list
         echo "-----------------------------"
