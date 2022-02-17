@@ -65,4 +65,7 @@ jobs:
         echo "-----------------------------"
         pytest -v test/functional -k test_array
         echo "-----------------------------"
-        ctest -C Release -V
+        type CTestTestfile.cmake
+        echo "-----------------------------"
+        C:\hostedtoolcache\windows\Python\3.9.10\x64\Scripts\pytest.exe "-v" "test/functional"
+        echo "-----------------------------"
