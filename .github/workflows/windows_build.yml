@@ -18,7 +18,7 @@ jobs:
         vcpkg.exe integrate install
 
     - name: Configure CMake
-      working-directory: ${{env.GITHUB_WORKSPACE}}/cmake
+      working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
         cd cmake
