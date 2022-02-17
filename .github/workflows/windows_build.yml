@@ -10,7 +10,7 @@ jobs:
       matrix:
         cmake_flags: ["-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=ON",
                       "-DUSE_DTOA_LIBRARY=ON     -DBUILD_TESTS=ON",
-                      "-DUSE_NO_MD5=ON           -DBUILD_TESTS=ON",
+                      "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=ON",
                       "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON",
                       "-DUSE_SYSTEM_MINIZIP=ON   -DUSE_OPENSSL_MD5=ON -DBUILD_TESTS=ON"]
 
@@ -49,4 +49,4 @@ jobs:
       run: |
         cd cmake
         copy test\functional\src\Release\*.exe test\functional\src
-        pytest -v test/functional -k test_header_image
+        pytest -v test/functional -k test_array
