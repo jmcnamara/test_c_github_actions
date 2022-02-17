@@ -28,7 +28,7 @@ jobs:
       shell: cmd
       run: |
         # vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
-        vcpkg.exe install zlib:x86-windows zlib:x64-windows
+        vcpkg.exe install zlib:x64-windows
         echo "-----------------------------"
         vcpkg.exe list
         echo "-----------------------------"
@@ -40,15 +40,15 @@ jobs:
       shell: cmd
       run: |
         cd cmake
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
-        cmake .. -DCMAKE_BUILD_TYPE=Release ${{ matrix.cmake_flags }} -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+        cmake .. -DCMAKE_BUILD_TYPE=Release ${{ matrix.cmake_flags }} -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -A x64
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
         cd cmake
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         cmake --build . --config Release
 
     - name: Test
