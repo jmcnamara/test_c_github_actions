@@ -29,7 +29,9 @@ jobs:
       run: |
         # vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
         vcpkg.exe install zlib:x86-windows
+        echo "-----------------------------"
         vcpkg.exe list
+        echo "-----------------------------"
         vcpkg.exe integrate install
         pip install pytest
 
@@ -47,13 +49,18 @@ jobs:
       run: |
         cd cmake
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
-        cmake --build . --config Release
+        cmake --build build32 . --config Release
 
     - name: Test
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
         cd cmake
+        echo "-----------------------------"
         copy test\functional\src\Release\*.exe test\functional\src
+        echo "-----------------------------"
+        test\functional\src\test_array_formula01.exe
+        echo "-----------------------------"
         pytest -v test/functional -k test_array
-        ctest -C Release -V
+        echo "-----------------------------"
+        #ctest -C Release -V
