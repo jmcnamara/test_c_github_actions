@@ -17,6 +17,5 @@ jobs:
     - name: Make indent
       run: |
         sudo ln -s /usr/bin/indent /usr/bin/gindent
-        gindent --version
         make indent
         git status | grep 'nothing to commit'
