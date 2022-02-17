@@ -28,7 +28,8 @@ jobs:
       shell: cmd
       run: |
         # vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
-        vcpkg.exe install zlib
+        vcpkg.exe install zlib:x86-windows
+        vcpkg.exe list
         vcpkg.exe integrate install
         pip install pytest
 
