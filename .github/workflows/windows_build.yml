@@ -49,4 +49,4 @@ jobs:
       run: |
         cd cmake
         copy test\functional\src\Release\*.exe test\functional\src
-        pytest -v test/functional -k test_array
+        pytest -v test/functional
