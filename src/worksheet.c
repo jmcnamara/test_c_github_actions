@@ -6,7 +6,7 @@
  * Copyright 2014-2021, John McNamara, jmcnamara@cpan.org. See LICENSE.txt.
  *
  */
-
+    
 #ifdef USE_FMEMOPEN
 #define _POSIX_C_SOURCE 200809L
 #endif
