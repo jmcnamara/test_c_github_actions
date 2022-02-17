@@ -37,7 +37,7 @@ jobs:
       run: |
         cd cmake
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-        cmake --build . --config Release --parallel
+        cmake --build . --config Release
 
     - name: Test
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -45,4 +45,4 @@ jobs:
       run: |
         cd cmake
         copy test\functional\Release\src\*.exe test\functional\src
-        pytest -v test/functional
+        pytest -v test/functional -k test_array
