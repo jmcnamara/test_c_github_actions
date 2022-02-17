@@ -8,15 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        # cmake_flags: ["",
-        #               "-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=OFF",
-        #               "-DUSE_DTOA_LIBRARY=ON     -DBUILD_TESTS=OFF",
-        #               "-DUSE_NO_MD5=ON           -DBUILD_TESTS=OFF",
-        #               "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=OFF",
-        #               "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=OFF",
-        #               "-DUSE_SYSTEM_MINIZIP=ON   -DUSE_OPENSSL_MD5=ON -DBUILD_TESTS=OFF"]
         cmake_flags: ["-DBUILD_TESTS=ON"]
-
 
     runs-on: windows-latest
 
@@ -27,11 +19,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
-        # vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
         vcpkg.exe install zlib:x64-windows
-        echo "-----------------------------"
-        vcpkg.exe list
-        echo "-----------------------------"
         vcpkg.exe integrate install
         pip install pytest
 
@@ -56,15 +44,4 @@ jobs:
       shell: cmd
       run: |
         cd cmake
-        echo "-----------------------------"
-        copy test\functional\src\Release\*.exe test\functional\src
-        echo "-----------------------------"
-        test\functional\src\test_array_formula01.exe
-        echo "-----------------------------"
-        DIR *.xlsx
-        echo "-----------------------------"
-        pytest -v test/functional -k test_array
-        echo "-----------------------------"
-        Release\xlsxwriter_unit.exe
-        echo "-----------------------------"
- 
+        pytest -v test/functional

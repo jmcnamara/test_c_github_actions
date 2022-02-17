@@ -259,11 +259,11 @@ if(NOT USE_OPENSSL_MD5 AND NOT USE_NO_MD5)
 endif()
 
 if(USE_OPENSSL_MD5)
-	find_package(OpenSSL REQUIRED)
-	if(OpenSSL_FOUND)
-	    include_directories(${OPENSSL_INCLUDE_DIR})
-	    message(STATUS "OpenSSL version: ${OPENSSL_VERSION}")
-	endif()
+    find_package(OpenSSL REQUIRED)
+    if(OpenSSL_FOUND)
+        include_directories(${OPENSSL_INCLUDE_DIR})
+        message(STATUS "OpenSSL version: ${OPENSSL_VERSION}")
+    endif()
 endif()
 
 if (USE_DTOA_LIBRARY)
@@ -333,7 +333,7 @@ file(GLOB LXW_STYLES_SOURCES test/unit/styles/test*.c)
 file(GLOB LXW_DRAWING_SOURCES test/unit/drawing/test*.c)
 file(GLOB LXW_CHART_SOURCES test/unit/chart/test*.c)
 file(GLOB LXW_CUSTOM_SOURCES test/unit/custom/test*.c)
-file(GLOB LXW_FUNCTIONAL_SOURCES test/functional/src/test_array*.c)
+file(GLOB LXW_FUNCTIONAL_SOURCES test/functional/src/*.c)
 
 set(LXW_UNIT_SOURCES
     test/unit/test_all.c
@@ -366,12 +366,11 @@ if(BUILD_TESTS)
         message("    pip install pytest\n")
     endif()
 
-    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test/functional/src )
-
     foreach(source ${LXW_FUNCTIONAL_SOURCES})
        get_filename_component(basename ${source} NAME_WE)
        add_executable(${basename} ${source})
        target_link_libraries(${basename} xlsxwriter)
+       set_target_properties(${basename} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/functional/src")
     endforeach(source)
 
     add_custom_command(TARGET xlsxwriter_unit POST_BUILD
@@ -401,6 +400,7 @@ if(BUILD_EXAMPLES)
         get_filename_component(basename ${source} NAME_WE)
         add_executable(${basename} ${source})
         target_link_libraries(${basename} ${PROJECT_NAME})
+        set_target_properties(${basename} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "examples")
     endforeach(source)
 endif()
 
