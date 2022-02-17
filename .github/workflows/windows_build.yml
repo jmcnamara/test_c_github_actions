@@ -27,7 +27,8 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
-        vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
+        # vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
+        vcpkg.exe install zlib:x64-windows
         vcpkg.exe integrate install
         pip install pytest
 
