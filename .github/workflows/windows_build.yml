@@ -5,6 +5,20 @@ on: [push, pull_request]
 jobs:
   build:
     name: CMake on Windows
+
+    strategy:
+      matrix:
+        cmake_flags: ["",
+                      "-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=ON"]
+                      "-DUSE_DTOA_LIBRARY=ON     -DBUILD_TESTS=ON",
+                      "-DUSE_FMEMOPEN=ON         -DBUILD_TESTS=ON",
+                      "-DUSE_NO_MD5=ON           -DBUILD_TESTS=ON",
+                      "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=ON",
+                      "-DUSE_STANDARD_TMPFILE=ON -DBUILD_TESTS=ON",
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON",
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DUSE_OPENSSL_MD5=ON -DBUILD_TESTS=ON"]
+
+
     runs-on: windows-latest
 
     steps:
@@ -23,7 +37,7 @@ jobs:
       run: |
         cd cmake
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-        cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON ${{ matrix.cmake_flags }} -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -32,3 +46,11 @@ jobs:
         cd cmake
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         cmake --build . --config Release
+
+    - name: Test
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: cmd
+      run: |
+        cd cmake
+        copy test\functional\src\Release\*.exe test\functional\src
+        ctest -C Release -V
