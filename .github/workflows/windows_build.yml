@@ -15,7 +15,7 @@ jobs:
         #               "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=OFF",
         #               "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=OFF",
         #               "-DUSE_SYSTEM_MINIZIP=ON   -DUSE_OPENSSL_MD5=ON -DBUILD_TESTS=OFF"]
-        cmake_flags: ["-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=OFF"]
+        cmake_flags: ["-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=ON"]
 
 
     runs-on: windows-latest
