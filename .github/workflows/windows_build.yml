@@ -61,6 +61,8 @@ jobs:
         echo "-----------------------------"
         test\functional\src\test_array_formula01.exe
         echo "-----------------------------"
+        DIR *.xlsx
+        echo "-----------------------------"
         pytest -v test/functional -k test_array
         echo "-----------------------------"
         #ctest -C Release -V
