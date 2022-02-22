@@ -2,7 +2,7 @@ name: Cmake on Windows
 
 on:
   push:
-    branches: [coverity]
+    branches: [main]
 
 jobs:
   build:
