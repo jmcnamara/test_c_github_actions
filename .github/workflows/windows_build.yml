@@ -46,4 +46,5 @@ jobs:
       run: |
         cd cmake
         copy test\functional\src\Release\*.exe test\functional\src
+        test\functional\src\Release\test_header_image01.exe
         pytest -v test/functional
