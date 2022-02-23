@@ -25,13 +25,13 @@ int main() {
 
 
     /* Test long string. */
-    char *long_string = "This is a long string longer than the Excel limit of 255 characters used for testing                                                                                                                                                                                    end.";
-    worksheet_set_header(worksheet, long_string);
-    worksheet_set_footer(worksheet, long_string);
+    /* char *long_string = "This is a long string longer than the Excel limit of 255 characters used for testing                                                                                                                                                                                    end."; */
+    /* worksheet_set_header(worksheet, long_string); */
+    /* worksheet_set_footer(worksheet, long_string); */
 
 
     /* Test &G placeholder without image. */
-    lxw_header_footer_options options2 = {};
+    /* lxw_header_footer_options options2 = {}; */
     /* worksheet_set_header_opt(worksheet, "&L&G", NULL); */
     /* worksheet_set_footer_opt(worksheet, "&L&G", NULL); */
     /* worksheet_set_header_opt(worksheet, "&L&G", &options2); */
