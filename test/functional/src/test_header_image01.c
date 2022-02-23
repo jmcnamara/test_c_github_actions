@@ -34,9 +34,9 @@ int main() {
 
 
     /* Test &G placeholder without image. */
-    lxw_header_footer_options options2 = {};
-    worksheet_set_header_opt(worksheet, "&L&G", &options2);
-    worksheet_set_footer_opt(worksheet, "&L&G", &options2);
+    /* lxw_header_footer_options options2 = {}; */
+    /* worksheet_set_header_opt(worksheet, "&L&G", &options2); */
+    /* worksheet_set_footer_opt(worksheet, "&L&G", &options2); */
 
     /* Test too many images/not enough placeholders. */
     /* lxw_header_footer_options options3 = {.image_left = "images/red.jpg", .image_right = "images/red.jpg"}; */
