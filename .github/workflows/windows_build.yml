@@ -1,16 +1,19 @@
 name: Cmake on Windows
 
-on:
-  push:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
   build:
     name: CMake on Windows
 
     strategy:
+      fail-fast: false
       matrix:
-        cmake_flags: ["-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=ON"]
+        cmake_flags: ["-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=ON",
+                      "-DUSE_DTOA_LIBRARY=ON     -DBUILD_TESTS=ON",
+                      "-DUSE_OPENSSL_MD5=ON      -DBUILD_TESTS=ON",
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DBUILD_TESTS=ON",
+                      "-DUSE_SYSTEM_MINIZIP=ON   -DUSE_OPENSSL_MD5=ON -DBUILD_TESTS=ON"]
 
     runs-on: windows-latest
 
@@ -21,7 +24,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
-        vcpkg.exe install zlib:x64-windows 
+        vcpkg.exe install zlib:x64-windows minizip:x64-windows openssl:x64-windows
         vcpkg.exe integrate install
         pip install pytest
 
