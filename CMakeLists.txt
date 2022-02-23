@@ -333,7 +333,7 @@ file(GLOB LXW_STYLES_SOURCES test/unit/styles/test*.c)
 file(GLOB LXW_DRAWING_SOURCES test/unit/drawing/test*.c)
 file(GLOB LXW_CHART_SOURCES test/unit/chart/test*.c)
 file(GLOB LXW_CUSTOM_SOURCES test/unit/custom/test*.c)
-file(GLOB LXW_FUNCTIONAL_SOURCES test/functional/src/test_header_image*.c)
+file(GLOB LXW_FUNCTIONAL_SOURCES test/functional/src/test_header*.c)
 
 set(LXW_UNIT_SOURCES
     test/unit/test_all.c
@@ -384,7 +384,7 @@ if(BUILD_TESTS)
         )
     else()
         add_test(NAME functional
-            COMMAND pytest -v test/functional -k test_header_image
+            COMMAND pytest -v test/functional -k test_header
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         )
     endif()
