@@ -9690,6 +9690,7 @@ worksheet_set_header_opt(lxw_worksheet *self, const char *string,
         }
 
         /* Free any existing header image objects. */
+        free(self->header);
         _free_object_properties(self->header_left_object_props);
         _free_object_properties(self->header_center_object_props);
         _free_object_properties(self->header_right_object_props);
@@ -9722,8 +9723,6 @@ worksheet_set_header_opt(lxw_worksheet *self, const char *string,
         }
     }
 
-    /* Clear existing header, if any. */
-    free(self->header);
     self->header = tmp_header;
     self->header_footer_changed = LXW_TRUE;
 
@@ -9812,6 +9811,7 @@ worksheet_set_footer_opt(lxw_worksheet *self, const char *string,
         }
 
         /* Free any existing footer image objects. */
+        free(self->footer);
         _free_object_properties(self->footer_left_object_props);
         _free_object_properties(self->footer_center_object_props);
         _free_object_properties(self->footer_right_object_props);
@@ -9844,8 +9844,6 @@ worksheet_set_footer_opt(lxw_worksheet *self, const char *string,
         }
     }
 
-    /* Clear existing header, if any. */
-    free(self->footer);
     self->footer = tmp_footer;
     self->header_footer_changed = LXW_TRUE;
 
