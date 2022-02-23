@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cmake_flags: ["-DBUILD_EXAMPLES=ON       -DBUILD_TESTS=ON"]
+        cmake_flags: ["-DBUILD_TESTS=ON"]
 
     runs-on: windows-latest
 
